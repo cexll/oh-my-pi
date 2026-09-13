@@ -58,6 +58,23 @@ irm https://omp.sh/install.ps1 | iex
 mise use -g github:can1357/oh-my-pi
 ```
 
+> **Older mise (verified on 2025.12.13):** the `github:` backend can select this
+> repo's `omp-browser-relay-extension.zip` release asset instead of the `omp` binary,
+> leaving nothing usable on `PATH`. A current mise needs nothing extra; on 2025.x,
+> pin the asset explicitly in `~/.config/mise/config.toml`:
+
+```toml
+[tools."github:can1357/oh-my-pi"]
+version = "latest"
+asset_pattern = "omp-darwin-arm64"  # omp-<os>-<arch>: omp-linux-x64, omp-windows-x64.exe, …
+```
+
+> or use the npm backend, which is unaffected:
+
+```sh
+mise use -g npm:@oh-my-pi/pi-coding-agent
+```
+
 macOS · Linux · Windows · bun ≥ 1.3.14
 
 ### Shell completions
